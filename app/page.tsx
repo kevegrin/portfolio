@@ -39,7 +39,7 @@ export default function HomePage() {
     about: {
       title: {
         en: `About Me`,
-        es: `Sobre Mí`,
+        es: `Sobre Mi`,
       },
       description: {
         en: `Tijuana based student-developer who focuses on building and maintaining useful web and mobile apps. With expertise in React, Next.js, and modern CSS frameworks like Tailwind CSS, I love making my spontaneous ideas a digital reality. My journey in development started as a child with a curiosity to understand how digital (and analog!) products were built. This curiosity kept evolving and lead me into a life I am proud to be living.`,
