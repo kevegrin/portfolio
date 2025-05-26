@@ -5,6 +5,8 @@
 import Link from 'next/link'; // Using Next.js Link for client-side navigation (logo to home).
 import { useState } from 'react';
 
+import { useLanguage } from '../context/LanguageContext'; // Import the useLanguage hook for the button thingy
+
 // navigation links for easier management and consistency.
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -15,6 +17,10 @@ const navLinks = [
 export default function Header() {
   // State to manage the visibility of the mobile menu.
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Use the language context
+  const { language, toggleLanguage } = useLanguage();
+
 
   // Toggles the mobile menu open/closed.
   const toggleMobileMenu = () => {
@@ -45,10 +51,24 @@ export default function Header() {
               {link.label}
             </a>
           ))}
+          {/* Language Toggle Button for Desktop */}
+            <button
+                onClick={toggleLanguage}
+                className="ml-4 px-3 py-1 text-sm font-semibold rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition duration-300"
+             >
+                {language === 'en' ? 'ESPAÑOL' : 'ENGLISH'}
+            </button>
         </div>
 
         {/* Mobile Navigation Button: Toggles the mobile menu. */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center"> {/* Added flex items-center to align button */}
+          {/* Language Toggle Button, could make it part of the mobile menu) */}
+          <button
+            onClick={toggleLanguage}
+            className="mr-3 px-2 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition duration-300"
+          >
+            {language === 'en' ? 'ES' : 'EN'}
+          </button>
           <button
             onClick={toggleMobileMenu}
             className="text-gray-600 hover:text-indigo-600 focus:outline-none"
@@ -74,6 +94,12 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
+            <button
+                onClick={() => { toggleLanguage(); closeMobileMenu(); }} // Toggle and close menu
+                className="mt-4 px-3 py-1 text-sm font-semibold rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition duration-300"
+            >
+                {language === 'en' ? 'ESPAÑOL' : 'ENGLISH'}
+            </button>
           </nav>
         </div>
       )}

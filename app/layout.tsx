@@ -11,6 +11,9 @@ import Header from './components/Header';
 // What: Import the new Footer component. Functionality: Allows using the modular Footer. Optimal: Encapsulates footer logic, making layout.tsx cleaner and Footer reusable.
 import Footer from './components/Footer';
 
+import { LanguageProvider } from './context/LanguageContext'; // import the provider
+
+
 // loads the Inter font from Google Fonts, optimizing for performance
 const inter = Inter({ subsets: ['latin'] });
 
@@ -52,7 +55,9 @@ export default function RootLayout({
           Functionality/Appearance: The visual header remains largely the same, but the mobile navigation becomes functional (handled within Header.tsx).
           Optimal: Drastically cleans up layout.tsx, promotes reusability, and centralizes header logic in Header.tsx.
         */}
+        <LanguageProvider>
         <Header />
+        
 
         {/* Main content area, where page.tsx and other routes will render */}
         <main className="flex-grow">
@@ -64,6 +69,7 @@ export default function RootLayout({
             Functionality/Appearance: No change to the visual footer.
             Optimal: Cleans up layout.tsx, promotes reusability, and centralizes footer markup in Footer.tsx. */}
         <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
