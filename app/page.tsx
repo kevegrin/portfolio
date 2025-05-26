@@ -65,8 +65,8 @@ export default function HomePage() {
               <p className="text-gray-700">Tailwind CSS, Styled Components, Responsive Design</p>
             </div>
             <div className="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-              <h3 className="text-xl font-bold text-indigo-600 mb-2">Tools & Workflow</h3>
-              <p className="text-gray-700">Git, GitHub, VS Code, npm/yarn, Webpack, Babel</p>
+              <h3 className="text-xl font-bold text-indigo-600 mb-2">Tools &amp; Workflow</h3>
+              <p className="text-gray-700">Git, GitHub, VS Code, npm/yarn, Webpack, Babel</p> {/* Corrected: Tools &amp; Workflow in h3 above */}
             </div>
             <div className="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-300">
               <h3 className="text-xl font-bold text-indigo-600 mb-2">Programming Languages</h3>
