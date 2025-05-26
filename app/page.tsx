@@ -23,7 +23,7 @@ export default function HomePage() {
             className="rounded-full border-4 border-white shadow-lg mx-auto mb-6"
           />
           <h1 className="text-6xl font-extrabold leading-tight tracking-tighter mb-4">
-            Hello, I'm <span className="block text-indigo-200">Kev, and I dev</span>
+            Hello, I&apos;m <span className="block text-indigo-200">Kev, and I dev</span> {/* i had to set it to &apos; to satisfy eslint*/ }
           </h1>
           <p className="text-3xl font-light mb-8">
             I build <span className="font-medium">to learn</span>
