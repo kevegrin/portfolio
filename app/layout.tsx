@@ -5,6 +5,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css'; // global tailwind and custom styles
+// PROPOSED CHANGE: Add imports for new Header and Footer components
+// What: Import the new Header component. Functionality: Allows using the modular Header. Optimal: Encapsulates header logic, making layout.tsx cleaner and Header reusable.
+import Header from './components/Header';
+// What: Import the new Footer component. Functionality: Allows using the modular Footer. Optimal: Encapsulates footer logic, making layout.tsx cleaner and Footer reusable.
+import Footer from './components/Footer';
 
 // loads the Inter font from Google Fonts, optimizing for performance
 const inter = Inter({ subsets: ['latin'] });
@@ -41,38 +46,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} flex flex-col min-h-screen bg-gray-50 text-gray-900`}>
-        {/* Header component */}
-        <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
-          <nav className="container mx-auto px-6 flex justify-between items-center">
-            <a href="/" className="text-2xl font-bold text-gray-800 hover:text-indigo-600 transition duration-300">
-              pellegrin.xyz
-            </a>
-            <div className="hidden md:flex space-x-6">
-              <a href="#about" className="text-gray-600 hover:text-indigo-600 transition duration-300">About</a>
-              <a href="#projects" className="text-gray-600 hover:text-indigo-600 transition duration-300">Projects</a>
-              <a href="#contact" className="text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
-            </div>
-            {/* Mobile navigation (optional for MVP, but good for quick future proofing) */}
-            <div className="md:hidden">
-              <button className="text-gray-600 hover:text-indigo-600 focus:outline-none">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-              </button>
-            </div>
-          </nav>
-        </header>
+        {/*
+          PROPOSED CHANGE: Replace the inline <header> block with <Header />
+          What: The entire inline header JSX is replaced by a single <Header /> component instance.
+          Functionality/Appearance: The visual header remains largely the same, but the mobile navigation becomes functional (handled within Header.tsx).
+          Optimal: Drastically cleans up layout.tsx, promotes reusability, and centralizes header logic in Header.tsx.
+        */}
+        <Header />
 
         {/* Main content area, where page.tsx and other routes will render */}
         <main className="flex-grow">
           {children}
         </main>
 
-        {/* Footer component */}
-        <footer className="bg-gray-800 text-white py-6 text-center text-sm">
-          <div className="container mx-auto px-6">
-            <p>&copy; {new Date().getFullYear()} Kevin Pellegrin. All (most) rights reserved.</p>
-            <p className="mt-2">Built with Next.js and Tailwind CSS</p>
-          </div>
-        </footer>
+        {/* PROPOSED CHANGE: Replace the inline <footer> block with <Footer />
+            What: The entire inline footer JSX is replaced by a single <Footer /> component instance.
+            Functionality/Appearance: No change to the visual footer.
+            Optimal: Cleans up layout.tsx, promotes reusability, and centralizes footer markup in Footer.tsx. */}
+        <Footer />
       </body>
     </html>
   );
